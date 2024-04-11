@@ -1,0 +1,175 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    /* transition: all 0.3s ease; */
+}
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+
+.fa-bars {
+    cursor: pointer;
+}
+
+.navitem {
+    border-radius: 0 20px 20px 0;
+}
+
+.navitem:hover {
+    background-color: rgb(217, 212, 212);
+    cursor: pointer;
+}
+
+.itemnav {
+    cursor: pointer;
+}
+
+.itemnav:hover {
+    background-color: rgb(217, 212, 212)
+}
+
+.readypost {
+    border-radius: 10px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.readypost:hover {
+    color: rgb(219, 131, 64);
+}
+
+.post {
+    border-radius: 10px;
+    height: 150px;
+}
+
+.showComment:hover {
+    background-color: rgb(244, 241, 241);
+    cursor: pointer;
+}
+
+.subteacher {
+    cursor: pointer;
+}
+
+.subteacher.hover-effect {
+    background-color: #d6d1d1;
+}
+
+.subteacher1 {
+    cursor: pointer;
+}
+
+.subteacher1.hover-effect {
+    background-color: #d6d1d1;
+}
+
+.headerHomework:hover .postHomework {
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+    /* Thay đổi giá trị theo ý muốn của bạn */
+}
+
+
+.headerHomework {
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.postHomework:hover .postHomework1 {
+    background-color: rgb(220, 199, 240);
+}
+
+.showcmt:hover {
+    background-color: rgb(177, 174, 174);
+}
+
+.btnaddfile:hover {
+    background-color: rgb(255, 243, 255);
+}
+
+.btncancle:hover {
+    background-color: rgb(255, 243, 255);
+}
+
+.button {
+    cursor: pointer;
+}
+
+.btnsubmit {
+    transition: 0.3s all ease;
+    opacity: 0.9;
+}
+
+.btnsubmit:hover {
+    opacity: 1;
+}
+
+.divstudent:hover {
+    background-color: #d6d1d1;
+}
+
+.divstudent {
+    cursor: pointer;
+}
+
+
+.contentClass {
+    /* overflow-x: auto; */
+    width: 75%;
+    position: relative;
+}
+
+.hiddenSidebar {
+    visibility: hidden;
+}
+
+.showSidebar {
+    font-size: 25px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.divEveryone {
+    width: 75%;
+    height: 100%;
+}
+
+.divContentFile {
+    height: 100px;
+    width: 50%;
+    border-radius: 10px
+}
+
+@media (max-width: 1200px) {
+    .sidebarStudent {
+        color: red;
+        margin-left: -25%;
+    }
+
+    .divContentFile {
+        width: 85%;
+    }
+
+    .itemnav a h5 {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+        margin-top: 1rem;
+    }
+
+    .divEveryone {
+        width: 100%;
+    }
+
+    .contentClass {
+        width: 100%;
+    }
+
+    .hiddenSidebar {
+        visibility: inherit;
+    }
+}

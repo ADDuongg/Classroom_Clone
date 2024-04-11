@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body,
+html {
+    height: 100%;
+    width: 100%;
+}
+
+/* @media screen and (max-width: 1050px) {
+    .sidebaradmin {
+        margin-left: -20%;
+        
+    }
+
+    .divAll {
+        width: 100%;
+    }
+} */
+
+.divAll {
+    /* width: 100%; */
+    height: auto;
+}
+
+.sidebaradmin {
+    background-color: #212B36;
+    height: 100%;
+    color: white
+}
+
+.divsidebar:hover .sidebarlink,
+.divsidebar:hover .sidebarlink i {
+    color: white;
+}
+
+.divsidebar {
+    cursor: pointer;
+}
+
+.sidebarlink {
+    text-decoration: none;
+    color: #93A0AC;
+}
+
+.sidebarul {
+    margin-bottom: 0;
+    margin-top: 10px;
+    display: none;
+    transition: max-height 0.3s ease-out;
+    background-color: #212B36;
+    color: #93A0AC;
+    list-style: none;
+}
+
+.navbar1 {
+    height: 100vh;
+    width: 20%;
+    display: block;
+    background-color: #212B36;
+    color: white;
+    overflow-y: auto;
+}
+
+.showSidebar {
+    font-size: 25px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+@media (max-width: 1200px) {
+    .navbar1 {
+        color: red;
+        margin-left: -20%;
+    }
+
+    .divAll {
+        width: auto;
+    }
+
+    .showSidebar {
+        visibility: inherit;
+    }
+}
+
+.sidebarul>li>a {
+    text-decoration: none;
+    color: #93A0AC;
+}
+
+.sidebarul>li:hover {
+    cursor: pointer;
+    color: white;
+}
+
+.sidebarul.active {
+    display: block;
+    max-height: 500px;
+    /* Điều chỉnh giá trị tối đa phù hợp */
+}
