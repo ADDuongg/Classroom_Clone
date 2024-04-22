@@ -1,7 +1,7 @@
 @section('sidebar')
-    <div class="border-2 border-end h-100 p-0 sidebarStudent" style="width: 25%">
+    <div class="border-2 border-end h-100 p-0 sidebarStudent" style="width: 25%; overflow: auto" >
         <div class="container-fluid p-0 h-100 offcanvas-xl offcanvas-start"id="offcanvasNavbar">
-            <div class="row border-1 border-bottom w-100 m-0 " style="height: 20%">
+            <div class="row border-1 border-bottom w-100 m-0 " style="height: auto">
                 <div class="container d-flex flex-column justify-content-start align-items-start w-100">
                     <div class="row w-100 navitem">
                         <a class=" d-flex justify-content-start align-items-center ms-4"
@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row border-1 border-bottom w-100 m-0 " style="height: 30%; overflow-y: auto; ">
+            <div class="row border-1 border-bottom w-100 m-0 " style="height: auto">
                 <div class="container d-flex  flex-column justify-content-start align-items-start w-100">
                     <div class="row w-100 border-2 border-bottom"
                         style="position: sticky; top:0; z-index: 3; background-color: white">
@@ -37,6 +37,7 @@
                             </a>
                         </div>
                     @endforeach
+                    
                 </div>
             </div>
             <div class="row m-0 " style="height: 50%">

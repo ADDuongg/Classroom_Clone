@@ -18,6 +18,7 @@ use App\Http\Controllers\testController;
 use App\Http\Controllers\TomonhocController;
 use App\Http\Controllers\VideoLessonController;
 use App\Http\Middleware\CheckLoginMiddleware;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +41,13 @@ Route::get('/register', function () {
 Route::post('/register', [LoginController::class, 'registerPost']);
 
 Route::get('/admin', function () {
-    return view('admin');
+    $classrooms = DB::table("lophoc")
+        ->join("giaovien", "giaovien.giaovien_id", "=", "lophoc.giaovien_id")
+        ->join("hocky", "hocky.hocky_id", "=", "lophoc.hocky_id")
+        ->select("lophoc.*", "giaovien.hoten AS tengiaovien", "hocky.hocky AS tenhocky", "hocky.namhoc AS namhoc")
+        ->get();
+
+    return view("admin", compact("classrooms"));
 })->name('admin')->middleware(['auth']);
 Route::get('/teacherclass/{teacher_id}', [HomeController::class, 'index'])->name('teacherclass')->middleware(['auth']);
 Route::get('/studentclass/{student_id}', [testController::class, 'viewStudent'])->name('studentclass')->middleware(['auth']);
@@ -69,7 +76,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::delete('deletehomework/{id}', [postController::class, 'deleteHomework']);
     Route::get('setScore/{idpost}/{iduser}/{score}', [studentHomeworkController::class, 'setScore']);
-    Route::get('studentHomework/{idpost}/{idclass}',[studentHomeworkController::class, 'getStudentHomework']);
+    Route::get('studentHomework/{idpost}/{idclass}', [studentHomeworkController::class, 'getStudentHomework']);
     Route::get('fetchStudentHomework/{iduser}/{idpost}', [studentHomeworkController::class, 'fetchStudentHomework']);
     Route::resource('comments', commentController::class);
     Route::resource('studentHomework', studentHomeworkController::class);

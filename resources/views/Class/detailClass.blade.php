@@ -184,7 +184,7 @@
                                             $commentCount = $comments->count();
                                         @endphp
                                         @if ($post)
-                                            <div class="w-100 border border-1 mt-4 divCommentWrapper"
+                                            <div class="w-100 border border-1 mt-4 divCommentWrapper p-2"
                                                 style="border-radius: 10px; height: auto;">
                                                 <div class="w-100 ps-4 pe-4 Divpost border-1 border-bottom"
                                                     style="height: auto">
@@ -224,7 +224,7 @@
                                                         @endif
 
                                                     </div>
-                                                    <div class="content-post w-100 ms-3 d-flex flex-column mb-3">
+                                                    <div class="content-post w-100 ms-3 d-flex flex-column mb-3 ">
                                                         <p>{{ $content_data }}</p>
                                                         <div class="d-flex " style="flex-wrap: wrap">
                                                             @foreach ($file_data as $file)
@@ -355,7 +355,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex w-100 align-items-center">
-                                                        <img class="rounded-circle" style="height: 50px; width: 50px"
+                                                        <img class="rounded-circle mt-3" style="height: 40px; width: 50px"
                                                             src="{{ asset('images/' . $user->avatar) }}" alt="">
                                                         <div class=" d-flex mt-3 ms-3 form-control w-100 divInputComment"
                                                             style="height: auto" contenteditable="true">
@@ -527,7 +527,7 @@
                     formData.append('file[]', selectedFiles[i]);
                 }
 
-                fetch('https://api.classroom.io.vn/posts', {
+                fetch('https://classroom.io.vn/posts', {
                         method: "POST",
                         headers: {
                             // No need to set 'Content-Type' for FormData
@@ -600,7 +600,7 @@
                             var formData = new FormData()
                             formData.append('valueInput', inputEdit)
                             formData.append('_method', 'PUT')
-                            fetch(`https://api.classroom.io.vn/comments/${idComment}`, {
+                            fetch(`https://classroom.io.vn/comments/${idComment}`, {
                                 method: "POST",
                                 headers: {
                                     // No need to set 'Content-Type' for FormData
@@ -662,7 +662,7 @@
                                 <div class="w-100 d-flex">
                                     <img class="rounded-circle"
                                         style="height: 50px; width: 50px"
-                                        src="https://api.classroom.io.vn/images/${item['avatar']}"
+                                        src="https://classroom.io.vn/images/${item['avatar']}"
                                         alt="">
                                     <div class="ms-3 pt-1"
                                         style="height: 50px">
@@ -727,7 +727,7 @@
                     formData.append('user_id', id_user);
                     formData.append('post_id', id_post);
                     formData.append('content', input);
-                    fetch('https://api.classroom.io.vn/comments', {
+                    fetch('https://classroom.io.vn/comments', {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for FormData

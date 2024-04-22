@@ -21,7 +21,7 @@ class ClassRoom extends Controller
             ->join("hocky", "hocky.hocky_id", "=", "lophoc.hocky_id")
             ->select("lophoc.*", "giaovien.hoten AS tengiaovien", "hocky.hocky AS tenhocky", "hocky.namhoc AS namhoc")
             ->get();
-        /*  dd($classrooms); */
+       
         return view("ClassRoom.index", compact("classrooms"));
     }
 

@@ -29,16 +29,16 @@
 @endsection --}}
 
 @section('content')
-    <div class="contentClass p-0 h-100" style="overflow: auto;">
-        <div class="container-fluid w-100 p-0 m-0 h-100">
+    <div class="contentClass p-0 h-100" style="overflow: scroll;">
+        <div class="container-fluid  p-0 m-0 ">
             @if ($includeLayout)
                 @include('layoutAll.subHeader')
             @else
                 @include('layoutstudent.subHeader')
             @endif
-            <div class="row m-0 w-100" style="height: 92%">
+            <div class="row m-0 w-100" style="height: calc(100vh - 50px)">
                 <div class="divEveryone m-auto" style="width: 75%; height: 100%;">
-                    <div class="container h-auto w-100 pt-4">
+                    <div class="container-fluid pt-4">
                         <div class="row border-1 border-primary border-bottom pb-3">
                             <div class="col" style="font-size: 40px; color: rgb(163, 33, 163) ">
                                 Giáo viên 
@@ -92,7 +92,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="container h-auto w-100 mt-5">
+                    <div class="container-fluid mt-5">
                         <div class="row border-1 border-primary border-bottom pb-3">
                             <div class="col" style="font-size: 40px; color: rgb(163, 33, 163) ">
                                 Bạn học
@@ -152,7 +152,7 @@
             btnInviteTeacher.addEventListener('click', function() {
 
 
-                fetch('https://api.classroom.io.vn/subteacher/store', {
+                fetch('https://classroom.io.vn/subteacher/store', {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json',

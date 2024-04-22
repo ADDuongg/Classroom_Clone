@@ -120,7 +120,7 @@
                         <div class=" d-flex justify-content-between divFile1 mb-3"
                             style="height: 30%; width: 100%;">
                             <div class="w-100 h-100 d-flex">
-                                <img src="https://api.classroom.io.vn/${item['file_path']}"
+                                <img src="https://classroom.io.vn/${item['file_path']}"
                                     alt="" style="height: 100%; width: 15%;">
                                 <div class="ms-3">
                                     <a target="_blank" href="url('${item['file_path']}')">${item['file_original_name']}</a>
@@ -146,7 +146,7 @@
                     }
                 }
 
-                fetch(`https://api.classroom.io.vn/homework/${id_post}`)
+                fetch(`https://classroom.io.vn/homework/${id_post}`)
                     .then(res => res.json())
                     .then(data => {
                         dataContent = JSON.parse(data['post'][0].content);
@@ -260,7 +260,7 @@
                     })
                     formData.append('old_file', JSON.stringify(arr_file_old));
                     /* console.log(form_data); */
-                    fetch(`https://api.classroom.io.vn/homework/${id_post}`, {
+                    fetch(`https://classroom.io.vn/homework/${id_post}`, {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for form_data

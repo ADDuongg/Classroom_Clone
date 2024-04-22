@@ -60,53 +60,54 @@
                             class="fa-solid fa-filter me-2"></i>Lọc</button>
                 </div>
             </div>
-
-            <table class="table table-striped" style="height: 100%; width: 100%">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Tên môn học</th>
-                        <th>Giáo viên dạy</th>
-                        <th style="width: 700px;">Mô tả môn học</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($monhocs as $monhoc)
+            <div style="overflow-x: auto">
+                <table class="table table-striped" style="height: 100%; width: 100%">
+                    <thead>
                         <tr>
-                            <td>{{ $monhoc->monhoc_id }}</td>
-                            <td>{{ $monhoc->tenmonhoc }}</td>
-                            <td>{{ $monhoc->tengiaovien }}</td>
-                            <td>
-                                <textarea name="" id="" style="width: 100%;">{{ $monhoc->motamonhoc }}</textarea>
-                            </td>
-                            <td>
-                                <button class="btn btn-info dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
-                                    style="color: white">Action
-                                    {{-- <i class="fa-solid fa-caret-down fa-lg ms-3"></i> --}}
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item d-flex justify-content-evenly align-items-center"
-                                            href="{{ url('monhoc/' . $monhoc->monhoc_id) . '/edit' }}"><i
-                                                class="fa-solid fa-pen"></i>Update</a></li>
-                                    <li>
-                                        <form action="{{ url('monhoc/' . $monhoc->monhoc_id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="dropdown-item d-flex justify-content-evenly align-items-center">
-                                                <i class="fa-solid fa-trash"></i>Delete
-                                            </button>
-                                        </form>
-
-                                    </li>
-                                </ul>
-                            </td>
+                            <th>#</th>
+                            <th>Tên môn học</th>
+                            <th>Giáo viên dạy</th>
+                            <th style="width: 700px;">Mô tả môn học</th>
+                            <th>Action</th>
                         </tr>
-                    @endforeach
-
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($monhocs as $monhoc)
+                            <tr>
+                                <td>{{ $monhoc->monhoc_id }}</td>
+                                <td>{{ $monhoc->tenmonhoc }}</td>
+                                <td>{{ $monhoc->tengiaovien }}</td>
+                                <td>
+                                    <textarea name="" id="" style="width: 100%;">{{ $monhoc->motamonhoc }}</textarea>
+                                </td>
+                                <td>
+                                    <button class="btn btn-info dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
+                                        style="color: white">Action
+                                        {{-- <i class="fa-solid fa-caret-down fa-lg ms-3"></i> --}}
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item d-flex justify-content-evenly align-items-center"
+                                                href="{{ url('monhoc/' . $monhoc->monhoc_id) . '/edit' }}"><i
+                                                    class="fa-solid fa-pen"></i>Update</a></li>
+                                        <li>
+                                            <form action="{{ url('monhoc/' . $monhoc->monhoc_id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item d-flex justify-content-evenly align-items-center">
+                                                    <i class="fa-solid fa-trash"></i>Delete
+                                                </button>
+                                            </form>
+    
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endforeach
+    
+                    </tbody>
+                </table>
+            </div>
             {{-- <div class="d-flex justify-content-start align-items-center mb-3"
                 style="background-color: white; height: 90px;">
             </div> --}}

@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="contentClass h-100">
+    <div class="contentClass h-100" style="overflow: scroll">
         <div class="container-fluid w-100 p-0 m-0 h-100">
             @include('layoutAll.headerHomework')
             <div class="row m-0 w-100" style="height: 92%">
@@ -23,8 +23,8 @@
                     $outdate = $post->date;
                     $score = $post->maxscore;
                 @endphp
-                <div class="divDetailHomework mx-auto mt-5" style="width: 70%; height: auto;">
-                    <div class="container w-100 mt-3">
+                <div class="divDetailHomework m-auto " style="width: 70%; height: 100%;">
+                    <div class="container h-auto w-100 pt-4">
                         <div class="row w-100" style="height: 3rem">
                             <div class="col-10 ">
                                 <div class="h-100 w-100 d-flex align-items-center">
@@ -169,8 +169,8 @@
 
                             <div class="sendcomment w-100 d-flex align-items-center">
                                 <div class="imguser rounded-circle" style="width: 7%">
-                                    <img src="{{ asset('images/' . $user->avatar) }}" alt=""
-                                        style="height: 100%; width: 100%">
+                                    <img class="rounded-circle" src="{{ asset('images/' . $user->avatar) }}" alt=""
+                                        style="height: 50px; width: 50px">
                                 </div>
                                 <div class="send ms-3 me-3 d-flex align-items-center" style="width: 93%; height: 85%;">
                                     <input class="h-100 w-100 rounded-pill form-control" name="comment"
@@ -203,7 +203,7 @@
                 formData.append('user_id', iduser)
                 formData.append('post_id', idpost)
                 formData.append('content', inputvalue)
-                fetch('https://api.classroom.io.vn/comments', {
+                fetch('https://classroom.io.vn/comments', {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -228,7 +228,7 @@
                         <div class="divComment d-flex w-100 align-items-center justify-content-between mb-3">
                         <div class="w-100 d-flex">
                                     <img class="rounded-circle" style="height: 50px; width: 50px"
-                                        src="https://api.classroom.io.vn/images/${comment['avatar']}" alt="">
+                                        src="https://classroom.io.vn/images/${comment['avatar']}" alt="">
                                     <div class="ms-3 pt-1" style="height: auto">
                                         <div class=" d-flex flex-column " style="">
                                             <div class="d-flex">
@@ -291,7 +291,7 @@
                     var formData = new FormData()
                     formData.append('valueInput', inputEdit)
                     formData.append('_method', 'PUT')
-                    fetch(`https://api.classroom.io.vn/comments/${idComment}`, {
+                    fetch(`https://classroom.io.vn/comments/${idComment}`, {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for FormData

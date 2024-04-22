@@ -18,9 +18,10 @@
 
         {{-- active class --}}
         <div class="activeclass  d-flex flex-column" style="width: 100%; height: 500px; border-radius: 20px">
-            <div class="d-flex justify-content-between align-items-center mb-3 ps-3 pe-3"
+            <div class="row g-3 justify-content-between align-items-center mb-3 ps-3 pe-3"
                 style="background-color: white; height: 90px; border-radius: 10px">
-                <div class="me-3" style="font-weight: bold; font-size: 20px">Danh sách tất cả học sinh
+                <div class="me-3 col-md-4 col-12 text-center" style="font-weight: bold; font-size: 20px">Danh sách tất cả học
+                    sinh
                     <i class="fa-solid fa-graduation-cap fa-lg"></i>
                 </div>
                 @if (session('notice'))
@@ -29,7 +30,7 @@
                     </script>
                 @endif
 
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center  justify-content-center col-md-4 col-12">
                     <form action="" class="d-flex">
                         <input name="name" id="searchInput" type="search" class="form-control ms-3"
                             style="width: 200px;" placeholder="Nhập giá trị tìm kiếm...">
@@ -38,17 +39,10 @@
                 </div>
             </div>
 
-            <div class="d-flex align-items-center justify-content-between ps-4 pe-4" style="width: 100%;">
-                <div style="width: 100%; height: 40px;" class="d-flex align-items-center">
+            {{--  <div class="container mb-3 "> --}}
+            <div class="row g-3 mb-3  align-items-center justify-content-between ps-3 pe-3" >
+                <div style="" class="d-flex align-items-center col-md-4 ">
                     <label for="form-label">Show</label>
-                    {{-- <form id="showPerPageForm" action="{{ url('allstudent') }}" method="GET">
-                        <select id="showPerPage" name="showPerPage" class="ms-3 form-select" style="width: 70px;">
-                            <option value="">Select</option>
-                            <option value="1">1</option>
-                            <option value="3">3</option>
-                            <option value="5">5</option>
-                        </select>
-                    </form> --}}
                     <select id="showPerPage" name="showPerPage" class="ms-3 form-select" style="width: 100px;">
                         <option value="">Select</option>
                         <option value="1">1</option>
@@ -56,7 +50,7 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-                <form class="d-flex" style="height: 40px" action="">
+                <form class="d-flex col-md-6 justify-content-end" style="" action="">
                     <select name="phuhuynh" id="" class="form-select me-3" style="width: 13rem;">
                         <option value="">Chọn tên phu huynh</option>
                         @foreach (getAllParent() as $item)
@@ -73,98 +67,103 @@
                             class="fa-solid fa-filter me-2"></i>Lọc</button>
                 </form>
             </div>
+            {{-- </div> --}}
 
-            <table class="table table-striped" style="height: 100%; width: 100%">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>
-                            <a
-                                href="{{ request()->fullUrlWithQuery(['sortby' => 'hoten', 'sorttype' => $sortType === 'asc' ? 'desc' : 'asc']) }}">
-                                Họ tên
-                            </a>
-                        </th>
-
-                        <th>Giới tính</th>
-                        <th>Tuổi</th>
-                        <th>Ngày sinh</th>
-                        <th>Số điện thoại</th>
-                        <th>Phụ huynh</th>
-                        <th>Lớp học</th>
-                        <th>GVCN</th>
-                        <th>Ảnh đại diện</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody class="tbody">
-                    @foreach ($students as $student)
+            <div style="overflow-x: auto;">
+                <table class="table table-striped" style="">
+                    <thead>
                         <tr>
-                            <td>{{ $student->hocsinh_id }}</td>
-                            <td>{{ $student->hoten }}</td>
-                            <td>{{ $student->gender }}</td>
-                            <td>{{ $student->tuoi }}</td>
-                            <td>{{ $student->ngaysinh }}</td>
-                            <td>{{ $student->sdt }}</td>
-                            <td>
-                                <select class="form-select" style="width: 150px;">
-                                    @if ($student->phuhuynh_id && $student->tenphuhuynh)
-                                        <option value="{{ $student->phuhuynh_id }}">{{ $student->tenphuhuynh }}</option>
-                                    @else
-                                        <option value="">Chưa thêm phụ huynh</option>
-                                    @endif
-                                </select>
-                            </td>
-                            <td>
+                            <th>#</th>
+                            <th>
+                                <a
+                                    href="{{ request()->fullUrlWithQuery(['sortby' => 'hoten', 'sorttype' => $sortType === 'asc' ? 'desc' : 'asc']) }}">
+                                    Họ tên
+                                </a>
+                            </th>
 
-                                @if (empty($student->ten_lop_hoc))
-                                    <p>Học sinh này chưa có lớp học</p>
-                                @else
-                                    {{ $student->ten_lop_hoc }}
-                                @endif
-                            </td>
-                            <td>
-                                @if (empty($student->ten_giao_vien))
-                                    <p>Học sinh này chưa có GVCN</p>
-                                @else
-                                    {{ $student->ten_giao_vien }}
-                                @endif
-                            </td>
-                            <td class="text-center">
-                                <img width="60" src="{{ asset('images/' . $student->avatar) }}" alt="Avatar">
-                            </td>
-
-                            <td>
-                                <button class="btn btn-info dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
-                                    style="color: white">Action
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item d-flex justify-content-evenly align-items-center"
-                                            href="{{ url('student/' . $student->hocsinh_id) . '/edit' }}"><i
-                                                class="fa-solid fa-pen"></i>Update</a></li>
-                                    <li>
-                                        <form action="{{ url('student/' . $student->hocsinh_id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="dropdown-item d-flex justify-content-evenly align-items-center">
-                                                <i class="fa-solid fa-trash"></i>Delete
-                                            </button>
-                                        </form>
-
-                                    </li>
-                                </ul>
-                            </td>
+                            <th>Giới tính</th>
+                            <th>Tuổi</th>
+                            <th>Ngày sinh</th>
+                            <th>Số điện thoại</th>
+                            <th>Phụ huynh</th>
+                            <th>Lớp học</th>
+                            <th>GVCN</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Action</th>
                         </tr>
-                    @endforeach
-                    {{-- <tr class="text-end">
-                            <td class="w-100 d-flex justify-content-end">
-                                <div  id="paginationData">
-                                    {{ $students->appends(['showPerPage' => $showPerPage])->links() }}
-                                </div>
-                            </td>
-                        </tr> --}}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody class="tbody">
+                        @foreach ($students as $student)
+                            <tr>
+                                <td>{{ $student->hocsinh_id }}</td>
+                                <td>{{ $student->hoten }}</td>
+                                <td>{{ $student->gender }}</td>
+                                <td>{{ $student->tuoi }}</td>
+                                <td>{{ $student->ngaysinh }}</td>
+                                <td>{{ $student->sdt }}</td>
+                                <td>
+                                    <select class="form-select" style="width: 150px;">
+                                        @if ($student->phuhuynh_id && $student->tenphuhuynh)
+                                            <option value="{{ $student->phuhuynh_id }}">{{ $student->tenphuhuynh }}
+                                            </option>
+                                        @else
+                                            <option value="">Chưa thêm phụ huynh</option>
+                                        @endif
+                                    </select>
+                                </td>
+                                <td>
+
+                                    @if (empty($student->ten_lop_hoc))
+                                        <p>Học sinh này chưa có lớp học</p>
+                                    @else
+                                        {{ $student->ten_lop_hoc }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if (empty($student->ten_giao_vien))
+                                        <p>Học sinh này chưa có GVCN</p>
+                                    @else
+                                        {{ $student->ten_giao_vien }}
+                                    @endif
+                                </td>
+                                <td class="text-center">
+                                    <img width="60" src="{{ asset('images/' . $student->avatar) }}" alt="Avatar">
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-info dropdown-toggle" id="navbarDropdown"
+                                        data-bs-toggle="dropdown" style="color: white">Action
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item d-flex justify-content-evenly align-items-center"
+                                                href="{{ url('student/' . $student->hocsinh_id) . '/edit' }}"><i
+                                                    class="fa-solid fa-pen"></i>Update</a></li>
+                                        <li>
+                                            <form action="{{ url('student/' . $student->hocsinh_id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit"
+                                                    class="dropdown-item d-flex justify-content-evenly align-items-center">
+                                                    <i class="fa-solid fa-trash"></i>Delete
+                                                </button>
+                                            </form>
+
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endforeach
+                        {{-- <tr class="text-end">
+                                <td class="w-100 d-flex justify-content-end">
+                                    <div  id="paginationData">
+                                        {{ $students->appends(['showPerPage' => $showPerPage])->links() }}
+                                    </div>
+                                </td>
+                            </tr> --}}
+                    </tbody>
+                </table>
+
+            </div>
             <div class="w-100 d-flex justify-content-end" id="paginationData">
                 {{ $students->links() }}
             </div>
@@ -173,20 +172,20 @@
     </div>
     <script>
         /* document.getElementById('searchInput').addEventListener('input', function() {
-                        performSearch(this.value.trim());
-                    });
+                                performSearch(this.value.trim());
+                            });
 
-                    function performSearch(searchValue) {
-                        fetch(`allstudent?query=${searchValue}`, {
-                                method: 'GET'
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                // Xử lý kết quả tìm kiếm ở đây
-                            })
-                            .catch(error => console.error('Error:', error));
-                        console.log('Đang tìm kiếm:', searchValue);
-                    } */
+                            function performSearch(searchValue) {
+                                fetch(`allstudent?query=${searchValue}`, {
+                                        method: 'GET'
+                                    })
+                                    .then(response => response.json())
+                                    .then(data => {
+                                        // Xử lý kết quả tìm kiếm ở đây
+                                    })
+                                    .catch(error => console.error('Error:', error));
+                                console.log('Đang tìm kiếm:', searchValue);
+                            } */
 
 
 
@@ -249,11 +248,11 @@
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item d-flex justify-content-evenly align-items-center"
-                                        href="localhost:8000/student/${item['hocsinh_id']})/edit"><i
+                                        href="https://classroom.io.vn/student/${item['hocsinh_id']})/edit"><i
                                             
                                                 class="fa-solid fa-pen"></i>Update</a></li>
                                     <li>
-                                        <form action="localhost:8000/student/${item['hocsinh_id']})" method="POST">
+                                        <form action="https://classroom.io.vn/student/${item['hocsinh_id']})" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"

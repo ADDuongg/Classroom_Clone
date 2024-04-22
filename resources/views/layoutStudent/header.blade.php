@@ -14,8 +14,10 @@
         <div class=" d-flex align-items-center justify-content-end h-100 p-1">
             <i class="fa-solid fa-bell me-4" style="font-size: 30px"></i>
             @if ($user && $user->avatar)
-                <img data-bs-toggle="dropdown" style="height: 100%; min-width: 20%; cursor: pointer;" class="me-4 mt-2"
-                    src="{{ asset('images/' . $user->avatar) }}">
+            <img data-bs-toggle="dropdown" src="{{ asset('images/' . $user->avatar) }}" alt=""
+                    class="rounded-circle me-4" style="height: 50px; width: 50px; cursor: pointer;">
+                {{-- <img data-bs-toggle="dropdown" style="height: 100%; min-width: 20%; cursor: pointer;" class="me-4 mt-2"
+                    src="{{ asset('images/' . $user->avatar) }}"> --}}
                 <ul class="dropdown-menu">
                     <li class="d-flex align-items-center">
                         <a class="dropdown-item" href="{{url('/logout')}}">

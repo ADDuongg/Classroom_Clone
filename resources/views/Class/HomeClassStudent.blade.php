@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="h-100 contentClass" >
+    <div class="h-100 contentClass" style="overflow: auto">
         <div class="container w-100 h-100">
             <div class="row w-100 d-flex justify-content-start ms-3 align-items-center">
                 @foreach ($classTeach as $item)
@@ -91,7 +91,7 @@
                     var formdata = new FormData()
                     formdata.append('hocsinh_id', hocsinh_id)
                     formdata.append('code_class', input)
-                    fetch('https://api.classroom.io.vn/numberStudentInClass', {
+                    fetch('https://classroom.io.vn/numberStudentInClass', {
                             method: "POST",
                             headers: {
                                 'X-CSRF-TOKEN': token

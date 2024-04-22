@@ -16,16 +16,16 @@
                 $content = json_decode($post->content, true);
                 $countSubmit = $studentSubmit->count();
             @endphp
-            <div class="row g-4 m-0 w-100 px-lg-0 px-3" style="height: 92%">
-                <div class=" col-lg-5 col-12  border-1 border  h-100 p-0 order-lg-1 order-2">
-                    <div class="w-100 ps-4 d-flex align-items-center border-1 border-bottom" style="height: 10%">
-                        <div class="d-flex justify-content-center h-75 rounded-circle align-items-center"
-                            style="width: 12%;;background-color: #7627BB">
+            <div class="row g-4 m-0 w-100 px-lg-0 px-3" style="height: calc(100vh - 50px)">
+                <div class=" col-lg-5 col-12  border-1 border  h-100 p-0 order-lg-1 order-2" style="overflow: auto">
+                    <div class="w-100 ps-4 py-2 d-flex align-items-center border-1 border-bottom" style="min-height: 50px">
+                        <div class="d-flex justify-content-center  rounded-circle align-items-center "
+                            style="width: 12%;background-color: #7627BB; min-height: 50px;">
                             <i class="fa-solid fa-user-group text-white"></i>
                         </div>
                         <h5 class="ms-4 h-100 d-flex align-items-center">Danh sách học sinh</h5>
                     </div>
-                    <div class="mt-4 w-100 ps-4 d-flex align-items-center border-1 border-bottom " style="height: 10%">
+                    <div class="mt-4 w-100 ps-4 d-flex align-items-center border-1 border-bottom " style="min-height: 50px">
                         <div class="d-flex justify-content-center h-75 rounded-circle align-items-center"
                             style="width: 12%;;">
                             <i class="fa-solid fa-check text-success" style="font-size: 20px"></i>
@@ -93,6 +93,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-7 col-12 divDetail border-1 border h-auto order-lg-2 order-1">
 
                     <div class="container">
@@ -170,7 +171,7 @@
                                 this.value = ''; // Xóa nội dung nhập nếu không phải số
                             } else if (score !== '') {
                                 fetch(
-                                        `https://api.classroom.io.vn/setScore/${id_post}/${id_user}/${score}`
+                                        `http://classroom.io.vn/setScore/${id_post}/${id_user}/${score}`
                                         )
                                     .then(res => res.json())
                                     .then(data => {
@@ -182,7 +183,7 @@
                     }
                     item.addEventListener('click', function() {
                         fetch(
-                                `https://api.classroom.io.vn/fetchStudentHomework/${id_user}/${id_post}`
+                                `https://classroom.io.vn/fetchStudentHomework/${id_user}/${id_post}`
                                 )
                             .then(res => res.json())
                             .then(data => {
@@ -217,10 +218,10 @@
                                     <div class="border-1 border me-3 d-flex justify-content-between divFile mb-3" style="height: 5rem; width: 50%;">
                                         <div class="w-100 h-100 d-flex justify-content-between" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
                                             <div class="h-100" style="width: 70%;">
-                                                <img src="https://api.classroom.io.vn/${item['file_path']}" alt="" style="height: 100%; width: 100%;">
+                                                <img src="https://classroom.io.vn/${item['file_path']}" alt="" style="height: 100%; width: 100%;">
                                             </div>
                                             <div class="ps-3">
-                                                <a target="_blank" href="https://api.classroom.io.vn/${item['file_path']}">${item['file_name']}</a>
+                                                <a target="_blank" href="https://classroom.io.vn/${item['file_path']}">${item['file_name']}</a>
                                             </div>
                                         </div>
                                     </div>

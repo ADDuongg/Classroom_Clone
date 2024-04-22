@@ -7,6 +7,7 @@ use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -24,8 +25,14 @@ class LoginController extends Controller
             $user = Auth::user();
 
             if (auth()->user()->role === 'admin') {
-                return redirect()->route('admin');
-            }
+                $classrooms = DB::table("lophoc")
+                    ->join("giaovien", "giaovien.giaovien_id", "=", "lophoc.giaovien_id")
+                    ->join("hocky", "hocky.hocky_id", "=", "lophoc.hocky_id")
+                    ->select("lophoc.*", "giaovien.hoten AS tengiaovien", "hocky.hocky AS tenhocky", "hocky.namhoc AS namhoc")
+                    ->get();
+
+                return view("admin", compact("classrooms"));
+            }   
             if (auth()->user()->role === 'giaovien') {
                 $iduser = auth()->user()->id_user;
                 // Lấy thông tin của giáo viên và truyền sang route
@@ -68,10 +75,10 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::logout(); 
+        Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login'); 
+        return redirect()->route('login');
     }
 }

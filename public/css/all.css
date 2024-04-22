@@ -25,7 +25,13 @@ html {
 }
 
 .itemnav {
+    padding: 5px;
     cursor: pointer;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: black
 }
 
 .itemnav:hover {
@@ -64,6 +70,8 @@ html {
     cursor: pointer;
 }
 
+
+
 .subteacher1.hover-effect {
     background-color: #d6d1d1;
 }
@@ -72,6 +80,7 @@ html {
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
     /* Thay đổi giá trị theo ý muốn của bạn */
 }
+
 
 
 .headerHomework {
@@ -121,6 +130,7 @@ html {
     /* overflow-x: auto; */
     width: 75%;
     position: relative;
+    
 }
 
 .hiddenSidebar {
@@ -149,12 +159,14 @@ html {
         color: red;
         margin-left: -25%;
     }
-
+    /* .subheader{
+        height: calc(100vh - 17rem);
+    } */
     .divContentFile {
         width: 85%;
     }
 
-    .itemnav a h5 {
+    .itemnav a {
         text-decoration: none;
         font-weight: bold;
         font-size: 12px;

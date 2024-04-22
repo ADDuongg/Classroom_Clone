@@ -36,9 +36,9 @@
 </head>
 
 <body>
-    <div class=" container-fluid h-100 w-100">
+    <div class=" container-fluid h-100 w-100" style="overflow: hidden">
         <div class="header border-1 border-bottom"
-            style="z-index: 10;height: 7%; position: sticky; top: 0;left: 0; right: 0">
+            style="z-index: 10;  position: sticky; top: 0; height: 70px;">
             @yield('header');
         </div>
         <div class="row w-100" style="height: 93%">

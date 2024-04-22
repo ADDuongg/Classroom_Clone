@@ -23,7 +23,7 @@
 @endif
 
 @section('content')
-    <div class=" p-0 h-100 contentClass" style="overflow: auto;">
+    <div class=" p-0 h-100 contentClass" style="overflow: scroll;">
         <div class="container-fluid w-100 p-0 m-0 h-100">
             @if ($includeLayout)
                 @include('layoutAll.subHeader')
@@ -200,7 +200,7 @@
                 var idpost = btnGuide.getAttribute('data-id-post')
                 var iduser = btnGuide.getAttribute('data-id-user')
                 btnGuide.addEventListener('click', function() {
-                    window.location.href = `https://api.classroom.io.vn/gethomework/${idpost}/${iduser}`
+                    window.location.href = `https://classroom.io.vn/gethomework/${idpost}/${iduser}`
                 })
             }
             var isDisplay = true

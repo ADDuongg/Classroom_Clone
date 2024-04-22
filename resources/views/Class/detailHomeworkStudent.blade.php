@@ -164,9 +164,9 @@
                             </div>
 
                             <div class="sendcomment w-100 d-flex align-items-center">
-                                <div class="imguser rounded-circle" style="width: 4%">
-                                    <img src="{{ asset('images/' . $user->avatar) }}" alt=""
-                                        style="height: 100%; width: 100%">
+                                <div class="imguser rounded-circle me-3 me-md-3" style="width: 4%">
+                                    <img class="rounded-circle" src="{{ asset('images/' . $user->avatar) }}" alt=""
+                                        style="height: 50px; width: 50px">
                                 </div>
                                 <div class="send ms-3 me-3 d-flex align-items-center" style="width: 93%; height: 85%;">
                                     <input class="h-100 w-100 rounded-pill form-control" name="comment"
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="col-lg-3 p-0 shadow mt-3 mx-auto p-4"
-                    style="border-radius: 15px; height: 50vh; border: 0.5px solid rgb(195, 195, 195)">
+                    style="border-radius: 15px; height: 400px; border: 0.5px solid rgb(195, 195, 195)">
                     <div style="height: auto" class="w-100">
                         <div class="container  w-100  p-0 h-auto" style="">
                             <div class="row w-100 px-3 mx-auto">
@@ -189,29 +189,14 @@
                                 </div>
                                 <div class="col-4 text-end p-0 text-success status">Đã giao</div>
                             </div>
-                            <div class="row  px-3 mt-3 mx-auto " style="width: 105%;;height: 150px; overflow-y: scroll">
+                            <div class="row  px-3 mt-3 mx-auto " style="width: 105%;;height: 150px; overflow-y: auto">
                                 <div class="h-auto w-100 p-0 divWrapper">
-                                    {{--  <div class="mb-3 divFileStudent p-0 d-flex justify-content-between align-items-center border-1 border"
-                                        style="border-radius: 10px">
-                                        <div
-                                            class="imgname ps-2 py-2 w-75 d-flex justify-content-start align-items-center">
-                                            <div class="img h-100 w-25">
-                                                <img src="{{ url('images/' . $user->avatar) }}" alt=""
-                                                    class="h-100 w-100">
-                                            </div>
-                                            <div class="h-100 name w-25 ms-3">
-                                                ảnh 1
-                                            </div>
-                                        </div>
-                                        <div class="icon w-25 pe-2 h-100 d-flex align-items-center justify-content-end">
-                                            <button class="btn-close"></button>
-                                        </div>
-                                    </div> --}}
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="action w-100 " style="height: 5vh">
+                    <div class="action w-100 " style="height: auto  ">
                         <div data-id-user = "{{ $user->hocsinh_id }}" data-id-post = "{{ $post->id }}"
                             class="px-3 mx-auto mt-4 btncancle button border border-1"
                             style="height: 100%; width: 90%; color: #9B61CD; border-radius: 10px; display: none">
@@ -225,9 +210,9 @@
                         <div data-id-user = "{{ $user->hocsinh_id }}" data-id-post = "{{ $post->id }}"
                             class="px-3 mx-auto mt-4 btnsubmit button"
                             style="height: 100%; width: 90%; background-color: #7627BB; border-radius: 10px">
-                            <div class="h-100 w-100 p-0 d-flex justify-content-center align-items-center"
-                                style="color: white">
-                                <div>Nộp bài</div>
+                            <div class=" w-100 p-2 d-flex justify-content-center align-items-center"
+                                style="color: white; height: auto;">
+                                Nộp bài
                             </div>
                         </div>
                     </div>
@@ -253,7 +238,7 @@
                 btncancle.style.display = 'none'
                 formData.append('user_id', user_id)
                 formData.append('post_id', post_id)
-                fetch(`https://api.classroom.io.vn/changeStatus`, {
+                fetch(`https://classroom.io.vn/changeStatus`, {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -277,10 +262,10 @@
                     tmp += `
                         <div class="mb-3 divFileStudent p-0 d-flex justify-content-between align-items-center border-1 border"
                             style="border-radius: 10px">
-                            <a target="_blank" href="https://api.classroom.io.vn/${item['file_path']}"
+                            <a target="_blank" href="https://classroom.io.vn/${item['file_path']}"
                                 class="imgname ps-2 py-2 w-75 d-flex justify-content-start align-items-center">
                                 <div class="img h-100 w-25">
-                                    <img src="https://api.classroom.io.vn/${item['file_path']}" alt=""
+                                    <img src="https://classroom.io.vn/${item['file_path']}" alt=""
                                         class="h-100 w-100">
                                 </div>
                                 <div class="h-100 name w-25 ms-3">
@@ -298,7 +283,7 @@
                 divWrapper.innerHTML = tmp;
             }
 
-            fetch(`https://api.classroom.io.vn/fetchhomework/${post_id}/${user_id}`)
+            fetch(`https://classroom.io.vn/fetchhomework/${post_id}/${user_id}`)
                 .then(res => res.json())
                 .then(data => {
                     var statusFetch = data['homework'][0].isSubmit
@@ -348,7 +333,7 @@
                     formData.append('file[]', item)
                 })
 
-                fetch(`https://api.classroom.io.vn/studentHomework`, {
+                fetch(`https://classroom.io.vn/studentHomework`, {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -432,7 +417,7 @@
                 formData.append('user_id', iduser)
                 formData.append('post_id', idpost)
                 formData.append('content', inputvalue)
-                fetch('https://api.classroom.io.vn/comments', {
+                fetch('https://classroom.io.vn/comments', {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -457,7 +442,7 @@
                         <div class="divComment d-flex w-100 align-items-center justify-content-between mb-3">
                         <div class="w-100 d-flex">
                                     <img class="rounded-circle" style="height: 50px; width: 50px"
-                                        src="https://api.classroom.io.vn/images/${comment['avatar']}" alt="">
+                                        src="https://classroom.io.vn/images/${comment['avatar']}" alt="">
                                     <div class="ms-3 pt-1" style="height: auto">
                                         <div class=" d-flex flex-column " style="">
                                             <div class="d-flex">
@@ -520,7 +505,7 @@
                     var formData = new FormData()
                     formData.append('valueInput', inputEdit)
                     formData.append('_method', 'PUT')
-                    fetch(`https://api.classroom.io.vn/comments/${idComment}`, {
+                    fetch(`https://classroom.io.vn/comments/${idComment}`, {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for FormData

@@ -80,60 +80,86 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="overflow-x: auto">
                     <table class="table table-striped" style="height: 100%; width: 100%">
                         <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Tên lớp</th>
-                                <th>Giáo viên phụ trách</th>
+                                
+                                <th>Tên lớp học</th>
+                                <th>Giáo viên chủ nhiệm</th>
+                                <th>Giáo viên phụ</th>
+                                <th>Số lượng học sinh</th>
                                 <th>Học kỳ</th>
-                                <th>Số lượng hiện tại</th>
-                                <th>Trạng thái</th>
+                                <th>Năm học</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>dsd</td>
-                                <td>dsdsd</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsd</td>
-                            </tr>
-                            <tr>
-                                <td>dsd</td>
-                                <td>dsdsd</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsd</td>
-                            </tr>
-                            <tr>
-                                <td>dsd</td>
-                                <td>dsdsd</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsd</td>
-                            </tr>
-                            <tr>
-                                <td>dsd</td>
-                                <td>dsdsd</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsd</td>
-                            </tr>
-                            <tr>
-                                <td>dsd</td>
-                                <td>dsdsd</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsds</td>
-                                <td>dsd</td>
-                            </tr>
+                            @foreach ($classrooms as $classroom)
+                                @php
+                                    $id = uniqid();
+                                @endphp
+                                <tr class="w-auto">
+                                    
+                                    <th scope="row">{{ $classroom->tenlop }}</th>
+                                    <td>{{ $classroom->tengiaovien }}</td>
+        
+                                    <td class="">
+                                        <select name="subteacher" id="" class="form-select m-auto" style="width: 80%;">
+                                            @foreach (getSubTeacherBelongToClass($classroom->lophoc_id) as $item)
+                                                <option value="">{{$item->hoten}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>{{ $classroom->soluong }}</td>
+                                    <td>{{ $classroom->tenhocky }}</td>
+                                    <td>{{ $classroom->namhoc }}</td>
+                                    <td>
+                                        <button class="btn btn-info dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
+                                            style="color: white">Action
+                                            {{-- <i class="fa-solid fa-caret-down fa-lg ms-3"></i> --}}
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><button data-name = "{{ $classroom->tenlop }}" type="button"
+                                                    class="view w-100 btn btn-light d-flex justify-content-start align-items-center"
+                                                    data-bs-toggle="modal" data-bs-target="#modal"
+                                                    data-idclass="{{ $classroom->lophoc_id }}">
+                                                    <i class="fa-solid fa-eye me-3"></i>Xem lịch học
+                                                </button>
+                                            </li>
+                                            <li><a class=" dropdown-item d-flex justify-content-start align-items-center"
+                                                href="{{ url('addSubteacher/' . $classroom->lophoc_id) }}"><i
+                                                    class="me-3 fa-solid fa-plus"></i>Thêm giáo viên bộ môn</a></li>
+                                            <li><a class=" dropdown-item d-flex justify-content-start align-items-center"
+                                                    href="{{ url('classschedule/' . $classroom->lophoc_id) . '/edit' }}"><i
+                                                        class="me-3 fa-solid fa-pen"></i>Sửa lịch học</a></li>
+                                            <li><a class=" dropdown-item d-flex justify-content-start align-items-center"
+                                                    href="{{ url('classroom/' . $classroom->lophoc_id) . '/edit' }}"><i
+                                                        class="me-3 fa-solid fa-pen"></i>Sửa lớp học</a></li>
+                                            <li><a class=" dropdown-item d-flex justify-content-start align-items-center"
+                                                    href="{{ url('numberStudent/create/' . $classroom->lophoc_id) }}"><i
+                                                        class="me-3 fa-solid fa-plus"></i>Thêm học sinh</a></li>
+                                            <li><a class=" dropdown-item d-flex justify-content-start align-items-center"
+                                                    href="{{ url('numberStudent/deleteform/' . $classroom->lophoc_id) }}"><i
+                                                        class="me-3 fa-solid fa-minus"></i>Xóa học sinh</a></li>
+                                            <li>
+                                                <form action="{{ url('classroom/' . $classroom->lophoc_id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class=" dropdown-item d-flex justify-content-start align-items-center">
+                                                        <i class="me-3 fa-solid fa-trash"></i>Xóa lớp học
+                                                    </button>
+                                                </form>
+        
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            @endforeach
+        
                         </tbody>
+        
                     </table>
                     <div class="d-flex justify-content-start align-items-center mb-3"
                         style="background-color: white; height: 90px;">
