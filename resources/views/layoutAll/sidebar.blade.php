@@ -1,7 +1,7 @@
 @section('sidebar')
     <div class="border-2 border-end h-100 p-0 sidebarStudent" style="width: 25%;overflow: auto">
         <div class="container-fluid p-0 h-100 offcanvas-xl offcanvas-start"id="offcanvasNavbar">
-            <div class="row border-1 border-bottom w-100 m-0 " style="height: 20%">
+            <div class="row border-1 border-bottom w-100 m-0 " style="height: auto">
                 <div class="container d-flex flex-column justify-content-start align-items-start w-100">
                     <div class="row w-100 navitem">
                         <a class=" d-flex justify-content-start align-items-center ms-4"
