@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row border-1 border-bottom w-100 m-0 " style="height: 30%; overflow-y: auto; ">
+            <div class="row border-1 border-bottom w-100 m-0 " style="height: auto">
                 <div class="container d-flex  flex-column justify-content-start align-items-start w-100">
                     <div class="row w-100 border-2 border-bottom"
                         style="position: sticky; top:0; z-index: 3; background-color: white">
