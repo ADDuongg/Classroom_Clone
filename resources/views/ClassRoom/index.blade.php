@@ -64,7 +64,7 @@
             <table class="table table-striped" style="height: 100%; width: 100%">
                 <thead>
                     <tr>
-                        {{-- <th>#</th> --}}
+                        
                         <th>Tên lớp học</th>
                         <th>Giáo viên chủ nhiệm</th>
                         <th>Giáo viên phụ</th>
@@ -80,7 +80,7 @@
                             $id = uniqid();
                         @endphp
                         <tr class="w-auto">
-                            {{-- <td>{{ $monhoc->monhoc_id }}</td> --}}
+                            
                             <th scope="row">{{ $classroom->tenlop }}</th>
                             <td>{{ $classroom->tengiaovien }}</td>
 
