@@ -253,7 +253,7 @@
                 btncancle.style.display = 'none'
                 formData.append('user_id', user_id)
                 formData.append('post_id', post_id)
-                fetch(`http://localhost:8000/changeStatus`, {
+                fetch(`https://api.classroom.io.vn/changeStatus`, {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -277,10 +277,10 @@
                     tmp += `
                         <div class="mb-3 divFileStudent p-0 d-flex justify-content-between align-items-center border-1 border"
                             style="border-radius: 10px">
-                            <a target="_blank" href="http://localhost:8000/${item['file_path']}"
+                            <a target="_blank" href="https://api.classroom.io.vn/${item['file_path']}"
                                 class="imgname ps-2 py-2 w-75 d-flex justify-content-start align-items-center">
                                 <div class="img h-100 w-25">
-                                    <img src="http://localhost:8000/${item['file_path']}" alt=""
+                                    <img src="https://api.classroom.io.vn/${item['file_path']}" alt=""
                                         class="h-100 w-100">
                                 </div>
                                 <div class="h-100 name w-25 ms-3">
@@ -298,7 +298,7 @@
                 divWrapper.innerHTML = tmp;
             }
 
-            fetch(`http://localhost:8000/fetchhomework/${post_id}/${user_id}`)
+            fetch(`https://api.classroom.io.vn/fetchhomework/${post_id}/${user_id}`)
                 .then(res => res.json())
                 .then(data => {
                     var statusFetch = data['homework'][0].isSubmit
@@ -348,7 +348,7 @@
                     formData.append('file[]', item)
                 })
 
-                fetch(`http://localhost:8000/studentHomework`, {
+                fetch(`https://api.classroom.io.vn/studentHomework`, {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -432,7 +432,7 @@
                 formData.append('user_id', iduser)
                 formData.append('post_id', idpost)
                 formData.append('content', inputvalue)
-                fetch('http://localhost:8000/comments', {
+                fetch('https://api.classroom.io.vn/comments', {
                         method: "POST",
                         headers: {
                             'X-CSRF-TOKEN': token
@@ -457,7 +457,7 @@
                         <div class="divComment d-flex w-100 align-items-center justify-content-between mb-3">
                         <div class="w-100 d-flex">
                                     <img class="rounded-circle" style="height: 50px; width: 50px"
-                                        src="http://localhost:8000/images/${comment['avatar']}" alt="">
+                                        src="https://api.classroom.io.vn/images/${comment['avatar']}" alt="">
                                     <div class="ms-3 pt-1" style="height: auto">
                                         <div class=" d-flex flex-column " style="">
                                             <div class="d-flex">
@@ -520,7 +520,7 @@
                     var formData = new FormData()
                     formData.append('valueInput', inputEdit)
                     formData.append('_method', 'PUT')
-                    fetch(`http://localhost:8000/comments/${idComment}`, {
+                    fetch(`https://api.classroom.io.vn/comments/${idComment}`, {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for FormData

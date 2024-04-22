@@ -44,7 +44,7 @@
                             <div class="divComment d-flex w-100 align-items-center justify-content-between mb-3">
                                 <div class="w-100 d-flex">
                                     <img class="rounded-circle" style="height: 50px; width: 50px"
-                                        src="http://localhost:8000/images/${comment['avatar']}" alt="">
+                                        src="https://api.classroom.io.vn/images/${comment['avatar']}" alt="">
                                     <div class="ms-3 pt-1" style="height: auto">
                                         <div class=" d-flex flex-column " style="">
                                             <div class="d-flex">
@@ -95,7 +95,7 @@
                                 var formData = new FormData()
                                 formData.append('valueInput', inputEdit)
                                 formData.append('_method', 'PUT')
-                                fetch(`http://localhost:8000/comments/${idComment}`, {
+                                fetch(`https://api.classroom.io.vn/comments/${idComment}`, {
                                         method: "POST",
                                         headers: {
                                             // No need to set 'Content-Type' for FormData
@@ -147,7 +147,7 @@
                 btnClose.addEventListener('click', function() {
                     window.location.reload();
                 })
-                fetch(`http://localhost:8000/comments/${idpost}`)
+                fetch(`https://api.classroom.io.vn/comments/${idpost}`)
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
@@ -165,7 +165,7 @@
                     formData.append('user_id', iduser)
                     formData.append('post_id', idpost)
                     formData.append('content', inputvalue)
-                    fetch('http://localhost:8000/comments', {
+                    fetch('https://api.classroom.io.vn/comments', {
                             method: "POST",
                             headers: {
                                 'X-CSRF-TOKEN': token
@@ -188,7 +188,7 @@
                             <div class="divComment d-flex w-100 align-items-center justify-content-between mb-3">
                                 <div class="w-100 d-flex">
                                     <img class="rounded-circle" style="height: 50px; width: 50px"
-                                        src="http://localhost:8000/images/${comment['avatar']}" alt="">
+                                        src="https://api.classroom.io.vn/images/${comment['avatar']}" alt="">
                                     <div class="ms-3 pt-1" style="height: auto">
                                         <div class=" d-flex flex-column " style="">
                                             <div class="d-flex">

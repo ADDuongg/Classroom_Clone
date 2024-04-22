@@ -200,7 +200,7 @@
                 var idpost = btnGuide.getAttribute('data-id-post')
                 var iduser = btnGuide.getAttribute('data-id-user')
                 btnGuide.addEventListener('click', function() {
-                    window.location.href = `http://localhost:8000/gethomework/${idpost}/${iduser}`
+                    window.location.href = `https://api.classroom.io.vn/gethomework/${idpost}/${iduser}`
                 })
             }
             var isDisplay = true

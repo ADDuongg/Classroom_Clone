@@ -48,8 +48,8 @@ class HomeController extends Controller
     {
         return DB::table('lophoc')
             ->select('lophoc.*')
-            ->join('soluonglop','soluonglop.lophoc_id','=','lophoc.lophoc_id')
-            ->where('soluonglop.hocsinh_id','=',$id_user)
+            ->join('soluonglop', 'soluonglop.lophoc_id', '=', 'lophoc.lophoc_id')
+            ->where('soluonglop.hocsinh_id', '=', $id_user)
             ->get();
     }
     public function detailClass($id, $iduser)
@@ -115,9 +115,13 @@ class HomeController extends Controller
         if ($userType === 'giaovien') {
             $user = $this->teacher->where('giaovien_id', $id_user)->first();
             $classroom = ClassRoom::where('lophoc_id', $id_class)->first();
-
             $classTeach = $this->getClassTeach($id_user);
-            return view('Class.everyOne', compact('user', 'classTeach', 'classroom', 'id_user'));
+            $teacher = DB::table('lophoc')
+            ->select('lophoc.*', 'giaovien.*')
+            ->join('giaovien', 'giaovien.giaovien_id', '=', 'lophoc.giaovien_id')
+            ->where('giaovien.giaovien_id', $id_user)
+            ->first();
+            return view('Class.everyOne', compact('user', 'classTeach', 'classroom', 'id_user','teacher'));
         } elseif ($userType === 'hocsinh') {
             $user = $this->student->where('hocsinh_id', $id_user)->first();
             $classroom = ClassRoom::where('lophoc_id', $id_class)->first();
@@ -127,9 +131,8 @@ class HomeController extends Controller
                 ->select('lophoc.*', 'giaovien.*')
                 ->where('soluonglop.hocsinh_id', '=', $id_user)
                 ->first();
-                
             $classTeach = $this->getClassTeachStudent($id_user);
-            return view('Class.everyOne', compact('classTeach','user', 'teacher', 'classroom', 'id_user'));
+            return view('Class.everyOne', compact('classTeach', 'user', 'teacher', 'classroom', 'id_user'));
         }
     }
 

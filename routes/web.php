@@ -31,9 +31,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'loginPost']);
 Route::get('/register', function () {
@@ -47,7 +45,9 @@ Route::get('/admin', function () {
 Route::get('/teacherclass/{teacher_id}', [HomeController::class, 'index'])->name('teacherclass')->middleware(['auth']);
 Route::get('/studentclass/{student_id}', [testController::class, 'viewStudent'])->name('studentclass')->middleware(['auth']);
 
-
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcome');
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

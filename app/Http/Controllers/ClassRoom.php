@@ -69,8 +69,7 @@ class ClassRoom extends Controller
 
     public function storeSubteacher(Request $request)
     {
-        /* $dataRequest = json_decode($request->getContent(), true);
-        dd($dataRequest); */
+        
         if ($request->ajax()) {
 
             $dataRequest = json_decode($request->getContent(), true);

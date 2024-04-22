@@ -120,7 +120,7 @@
                     arrFile.forEach(item => {
                         formData.append('file[]', item);
                     })
-                    fetch('http://localhost:8000/homework/store', {
+                    fetch('https://api.classroom.io.vn/homework/store', {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for FormData

@@ -527,7 +527,7 @@
                     formData.append('file[]', selectedFiles[i]);
                 }
 
-                fetch('http://localhost:8000/posts', {
+                fetch('https://api.classroom.io.vn/posts', {
                         method: "POST",
                         headers: {
                             // No need to set 'Content-Type' for FormData
@@ -600,7 +600,7 @@
                             var formData = new FormData()
                             formData.append('valueInput', inputEdit)
                             formData.append('_method', 'PUT')
-                            fetch(`http://localhost:8000/comments/${idComment}`, {
+                            fetch(`https://api.classroom.io.vn/comments/${idComment}`, {
                                 method: "POST",
                                 headers: {
                                     // No need to set 'Content-Type' for FormData
@@ -662,7 +662,7 @@
                                 <div class="w-100 d-flex">
                                     <img class="rounded-circle"
                                         style="height: 50px; width: 50px"
-                                        src="http://localhost:8000/images/${item['avatar']}"
+                                        src="https://api.classroom.io.vn/images/${item['avatar']}"
                                         alt="">
                                     <div class="ms-3 pt-1"
                                         style="height: 50px">
@@ -727,7 +727,7 @@
                     formData.append('user_id', id_user);
                     formData.append('post_id', id_post);
                     formData.append('content', input);
-                    fetch('http://localhost:8000/comments', {
+                    fetch('https://api.classroom.io.vn/comments', {
                             method: "POST",
                             headers: {
                                 // No need to set 'Content-Type' for FormData

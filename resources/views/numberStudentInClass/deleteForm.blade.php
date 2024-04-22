@@ -56,7 +56,7 @@
             var token = document.head.querySelector('meta[name="csrf-token"]').content;
             if (selectedStudentId) {
 
-                fetch(`http://localhost:8000/numberStudentInClass/${selectedStudentId}`, {
+                fetch(`https://api.classroom.io.vn/numberStudentInClass/${selectedStudentId}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',

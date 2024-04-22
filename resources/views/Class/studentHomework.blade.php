@@ -170,7 +170,7 @@
                                 this.value = ''; // Xóa nội dung nhập nếu không phải số
                             } else if (score !== '') {
                                 fetch(
-                                        `http://localhost:8000/setScore/${id_post}/${id_user}/${score}`
+                                        `https://api.classroom.io.vn/setScore/${id_post}/${id_user}/${score}`
                                         )
                                     .then(res => res.json())
                                     .then(data => {
@@ -182,7 +182,7 @@
                     }
                     item.addEventListener('click', function() {
                         fetch(
-                                `http://localhost:8000/fetchStudentHomework/${id_user}/${id_post}`
+                                `https://api.classroom.io.vn/fetchStudentHomework/${id_user}/${id_post}`
                                 )
                             .then(res => res.json())
                             .then(data => {
@@ -217,10 +217,10 @@
                                     <div class="border-1 border me-3 d-flex justify-content-between divFile mb-3" style="height: 5rem; width: 50%;">
                                         <div class="w-100 h-100 d-flex justify-content-between" style="border-top-left-radius: 10px; border-bottom-left-radius: 10px;">
                                             <div class="h-100" style="width: 70%;">
-                                                <img src="http://localhost:8000/${item['file_path']}" alt="" style="height: 100%; width: 100%;">
+                                                <img src="https://api.classroom.io.vn/${item['file_path']}" alt="" style="height: 100%; width: 100%;">
                                             </div>
                                             <div class="ps-3">
-                                                <a target="_blank" href="http://localhost:8000/${item['file_path']}">${item['file_name']}</a>
+                                                <a target="_blank" href="https://api.classroom.io.vn/${item['file_path']}">${item['file_name']}</a>
                                             </div>
                                         </div>
                                     </div>

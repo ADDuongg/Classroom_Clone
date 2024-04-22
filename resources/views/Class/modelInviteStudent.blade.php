@@ -52,7 +52,7 @@
                 hocsinh_id: clonedSubTeachers1
             };
             btnInviteStudent.addEventListener('click', function() {
-                fetch('http://localhost:8000/studentclass/store', {
+                fetch('https://api.classroom.io.vn/studentclass/store', {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json',

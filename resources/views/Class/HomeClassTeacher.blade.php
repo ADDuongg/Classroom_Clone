@@ -10,7 +10,7 @@
 
 @section('content')
 <div class=" contentClass  h-100">
-    <div class="container-fluid w-100 h-100">
+    <div class="container w-100 h-100">
         <div class="row w-100 d-flex justify-content-start ms-3 align-items-center">
             @foreach ($classTeach as $item)
                 <div class="card me-4 mt-4 mb-4 p-0 d-flex flex-column justify-content-start"

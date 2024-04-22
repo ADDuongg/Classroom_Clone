@@ -61,6 +61,10 @@
                                     style="height: 50px; width: 50px">
                                 <p class="m-0" style="font-size: 18px; color: #56575a"><b>Giáo viên chủ nhiệm:
                                     </b>{{ $teacher->hoten }} </p>
+                                    {{-- @php
+                                     dd($teacher);
+                                     
+                                    @endphp --}}
                             </div>
                             @foreach (getSubTeacherBelongToClass($classroom->lophoc_id) as $subTeacher)
                                 <div
@@ -148,7 +152,7 @@
             btnInviteTeacher.addEventListener('click', function() {
 
 
-                fetch('http://localhost:8000/subteacher/store', {
+                fetch('https://api.classroom.io.vn/subteacher/store', {
                         method: "POST",
                         headers: {
                             'Content-Type': 'application/json',

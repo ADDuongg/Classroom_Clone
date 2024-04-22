@@ -91,7 +91,7 @@
                     var formdata = new FormData()
                     formdata.append('hocsinh_id', hocsinh_id)
                     formdata.append('code_class', input)
-                    fetch('http://localhost:8000/numberStudentInClass', {
+                    fetch('https://api.classroom.io.vn/numberStudentInClass', {
                             method: "POST",
                             headers: {
                                 'X-CSRF-TOKEN': token
